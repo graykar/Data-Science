@@ -3,9 +3,9 @@ from flask import Flask, render_template, request
 import pickle
 
 # Load the Multinomial Naive Bayes model and CountVectorizer object from disk
-filename = 'C:\\Users\\graykar\\Downloads\\Pyhton\\Pickel_File\\Reasturent_Sentiment_Multinominal_Model.pkl'
+filename = 'Reasturent_Sentiment_Multinominal_Model.pkl'
 classifier = pickle.load(open(filename, 'rb'))
-cv = pickle.load(open('C:\\Users\\graykar\\Downloads\\Pyhton\\Pickel_File\\Reasturent_Sentiment_Tfidf.pkl','rb'))
+cv = pickle.load(open('Reasturent_Sentiment_Tfidf.pkl','rb'))
 
 app = Flask(__name__)
 
