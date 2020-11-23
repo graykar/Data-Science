@@ -1,7 +1,6 @@
 # Importing essential libraries
 from flask import Flask, render_template, request
 import pickle
-import re
 from nltk.stem import WordNetLemmatizer
 LMT = WordNetLemmatizer()
 
@@ -21,10 +20,9 @@ def predict():
     if request.method == 'POST':
     	message = request.form['message']
     	data = [message]
-		mess = re.sub('[^a-zA-Z]', ' ', data).lower().split() 
-        mess = [LMT.lemmatize(x) for x in mess if not x in set(stopwords.words('english')) - {'not'}]
+		mess = [LMT.lemmatize(x) for x in data.lower().split() if not x in set(stopwords.words('english')) - {'not'}]
         mess = " ".join(mess)	
-    	vect = cv.transform(data).toarray()
+    	vect = cv.transform(mess).toarray()
     	my_prediction = classifier.predict(vect)
     	return render_template('result.html', prediction=my_prediction)
 
