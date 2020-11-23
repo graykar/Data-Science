@@ -1,8 +1,10 @@
 # Importing essential libraries
 from flask import Flask, render_template, request
 import pickle
+import nltk
 from nltk.stem import WordNetLemmatizer
 LMT = WordNetLemmatizer()
+nltk.download('wordnet')
 
 # Load the Multinomial Naive Bayes model and CountVectorizer object from disk
 filename = 'Reasturent_Sentiment_Multinominal_Model.pkl'
